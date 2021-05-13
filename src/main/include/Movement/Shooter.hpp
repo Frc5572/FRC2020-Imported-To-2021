@@ -15,7 +15,7 @@ class Shooter{
         rev::CANSparkMax &RightMotor,
         frc::DoubleSolenoid &Hood,
         FRC5572Controller &Operator
-    );
+    );z
 
     void Shot();
     void Calucate();

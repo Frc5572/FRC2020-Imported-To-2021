@@ -8,7 +8,8 @@
 #include <frc/SpeedControllerGroup.h>
 #include "rev/CANSparkMax.h"
 #include "AHRS.h"
-
+#include <frc/PIDController.h>
+#include <frc/SmartDashboard/SmartDashboard.h>
 
 
 /* CAN ID layout for drive train from a top view
@@ -44,13 +45,30 @@ DriveTrain(
   );
 
 ~DriveTrain();
+void Calucate();
+void TestRPM();
+void Test();
+void AutoPID();
+void RunPID();
+void InitPID();
 void Drive();
 void LowerAmps();
 void Aim();
 
+  int AutoSelection = 0;
+
+  double Power = 0, Distance = 0, rpm = 0, leftRPM = 0, rightRPM = 0, SP = 0;
+
+  double kP = 6e-5, kI = 1e-6, kD = 0, kMaxOutput = 1.0, kMinOutput = -1.0 ,SetP = 700;
+
+  // kIz = 0, kFF = 0.000015,
+
   VisionManager* LimeLight;
 
   double disX, L, R;
+
+  frc::PIDController *m_pidControllerLeft;
+  frc::PIDController *m_pidControllerRight;
 
   frc::SpeedControllerGroup* LeftMotors;
   frc::SpeedControllerGroup* RightMotors;
@@ -68,12 +86,12 @@ void Aim();
   rev::CANSparkMax* BottomLeftMotor; 
   rev::CANSparkMax* BottomRightMotor;
 
-  rev::CANEncoder* TopLeftMotorEncoder    ;
-  rev::CANEncoder* TopRightMotorEncoder   ;
-  rev::CANEncoder* MiddleLeftMotorEncoder ;
-  rev::CANEncoder* MiddleRightMotorEncoder;
-  rev::CANEncoder* BottomLeftMotorEncoder ;
-  rev::CANEncoder* BottomRightMotorEncoder;
+  rev::CANEncoder* leftMotorEncoder    ;
+  rev::CANEncoder* rightMotorEncoder   ;
+  // rev::CANEncoder* MiddleLeftMotorEncoder ;
+  // rev::CANEncoder* MiddleRightMotorEncoder;
+  // rev::CANEncoder* BottomLeftMotorEncoder ;
+  // rev::CANEncoder* BottomRightMotorEncoder;
 
   AHRS* ahrs;
   };  

@@ -207,7 +207,7 @@ void Shooter::TestRPM(){
     else if(this->Operator->POV() == 90){
         shooterMotors->Set(.78);
         Hood->Set(frc::DoubleSolenoid::Value::kForward); 
-    }
+    } 
     else if(this->Operator->POV() == 270){
         shooterMotors->Set(.90); //small adjustment from .92 to .94
         Hood->Set(frc::DoubleSolenoid::Value::kForward); 
