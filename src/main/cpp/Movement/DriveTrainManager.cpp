@@ -229,7 +229,7 @@ DriveTrain::~DriveTrain()
 
 void DriveTrain::Drive()
 {
-    DriveTrain::Aim();
+    // DrivseTrain::Aim();
     if(this->Driver->L().second > .2 || this->Driver->L().second < -.2){
         LeftMotors->Set(-1 * Driver->L().second * .7  );
     }
